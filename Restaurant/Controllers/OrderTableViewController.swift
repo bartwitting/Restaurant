@@ -72,7 +72,6 @@ class OrderTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             MenuController.shared.order.menuItems.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
@@ -103,15 +102,16 @@ class OrderTableViewController: UITableViewController {
                     return
                 }
                 cell.imageView?.image = image
+                //        set the image size, partially copied from: https://stackoverflow.com/questions/2788028/how-do-i-make-uitableviewcells-imageview-a-fixed-size-even-when-the-image-is-sm
+                //
+                let itemSize = CGSize.init(width: 100, height: 100)
+                UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale);
+                let imageRect = CGRect.init(origin: CGPoint.zero, size: itemSize)
+                cell.imageView?.image!.draw(in: imageRect)
+                cell.imageView?.image! = UIGraphicsGetImageFromCurrentImageContext()!;
+                UIGraphicsEndImageContext();
             }
-            //        set the image size, partially copied from: https://stackoverflow.com/questions/2788028/how-do-i-make-uitableviewcells-imageview-a-fixed-size-even-when-the-image-is-sm
-            //
-            let itemSize = CGSize.init(width: 100, height: 100)
-            UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale);
-            let imageRect = CGRect.init(origin: CGPoint.zero, size: itemSize)
-            cell.imageView?.image!.draw(in: imageRect)
-            cell.imageView?.image! = UIGraphicsGetImageFromCurrentImageContext()!;
-            UIGraphicsEndImageContext();
+            
         }
     }
 }
