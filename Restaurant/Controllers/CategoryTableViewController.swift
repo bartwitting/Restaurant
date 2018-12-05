@@ -27,6 +27,12 @@ class CategoryTableViewController : UITableViewController {
         }
     }
     
+    @IBAction func unwindToCat(segue: UIStoryboardSegue) {
+        if segue.identifier == "unwindToCat" {
+            
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }

@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Restaurant-->
+        <!--Categories-->
         <scene sceneID="l0x-Y2-Zrq">
             <objects>
-                <tableViewController id="Qvz-ON-fYw" customClass="CategoryTableViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Categories" id="Qvz-ON-fYw" customClass="CategoryTableViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hb4-6g-5WE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hUt-GO-iD4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1591.2" y="83.208395802098963"/>
+            <point key="canvasLocation" x="1513" y="83"/>
         </scene>
         <!--Title-->
         <scene sceneID="gVd-sg-aKx">
@@ -101,7 +101,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7X3-GL-UKg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2412" y="83"/>
+            <point key="canvasLocation" x="2246" y="83"/>
         </scene>
         <!--Menu Item Detail View Controller-->
         <scene sceneID="Eur-qD-BMz">
@@ -176,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jOR-ur-L1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3295" y="481"/>
+            <point key="canvasLocation" x="3529" y="581"/>
         </scene>
         <!--Your Order-->
         <scene sceneID="8bt-wh-PZq">
@@ -214,6 +214,9 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="siu-26-llQ" kind="show" identifier="orderDetail" id="y6b-zN-skv"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -230,11 +233,13 @@
                     </navigationItem>
                     <connections>
                         <segue destination="QHB-wt-nHb" kind="presentation" identifier="ConfirmSegue" id="UmK-SX-9vB"/>
+                        <segue destination="Od8-p6-R6d" kind="unwind" unwindAction="unwindToCatWithSegue:" id="ozI-Qv-4ds"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="haV-Qa-55y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Od8-p6-R6d" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1591.2" y="771.36431784107947"/>
+            <point key="canvasLocation" x="1201" y="770"/>
         </scene>
         <!--Your order-->
         <scene sceneID="Kh1-Ig-FFe">
@@ -251,7 +256,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OYO-us-Yx2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="640.79999999999995" y="770.46476761619192"/>
+            <point key="canvasLocation" x="433" y="770"/>
         </scene>
         <!--Menu-->
         <scene sceneID="8Gd-vE-TrU">
@@ -328,10 +333,13 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Je-KG-Z8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hiF-WP-rZ0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2530" y="1032"/>
+            <point key="canvasLocation" x="2585" y="1070"/>
         </scene>
     </scenes>
     <resources>
         <image name="placeholder" width="100" height="100"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="y6b-zN-skv"/>
+    </inferredMetricsTieBreakers>
 </document>

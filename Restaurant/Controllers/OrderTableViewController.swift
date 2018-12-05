@@ -30,14 +30,23 @@ class OrderTableViewController: UITableViewController {
         let orderTotal = MenuController.shared.order.menuItems.reduce(0.0) { (result, menuItem) -> Double in
             return result + menuItem.price
         }
-        print("Order total:", orderTotal)
-        let formattedOrder = String(format: "$%.2f", orderTotal)
-        let alert = UIAlertController(title: "Confirm Order", message: "You are about to submit your order with a total of \(formattedOrder)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Submit", style: .default) { action in
-            self.uploadOrder()
-        })
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+        if orderTotal == 0 {
+            let empty = UIAlertController(title: "Empty Order", message: "You tried to order nothing", preferredStyle: .alert)
+//            empty.addAction(UIAlertAction(title: "Order something", style: .default) { action in self.performSegue(withIdentifier: "unwindToCat", sender: self)
+//            })
+            empty.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(empty, animated: true, completion: nil)
+        }
+        else {
+            print("Order total:", orderTotal)
+            let formattedOrder = String(format: "$%.2f", orderTotal)
+            let alert = UIAlertController(title: "Confirm Order", message: "You are about to submit your order with a total of \(formattedOrder)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Submit", style: .default) { action in
+                self.uploadOrder()
+            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func uploadOrder() {
@@ -52,11 +61,15 @@ class OrderTableViewController: UITableViewController {
         }
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ConfirmSegue" {
             let orderconfirmVC = segue.destination as! OrderConfirmViewController
             orderconfirmVC.minutes = orderMinutes
+        }
+        else if segue.identifier == "orderDetail" {
+            let menuitemdetailVC = segue.destination as! MenuItemDetailViewController
+            let index = tableView.indexPathForSelectedRow!.row
+            menuitemdetailVC.menuItem = MenuController.shared.order.menuItems[index]
         }
     }
     
