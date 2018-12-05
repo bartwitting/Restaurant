@@ -15,6 +15,7 @@ Het submitten van je order geeft deze notificatie
 ![Submit](/doc/Submit.png)
 Op dit scherm zie je hoe lang het duurt voor je je order krijgt
 ![Verwerking](/doc/Verwerking.png)
+Je kunt ook wijzigen in je orderlijst
 ![Edit](/doc/Edit.png)
 ![Swipe](/doc/Swipe.png)
 ![Delete](/doc/Delete.png)
