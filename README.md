@@ -19,3 +19,8 @@ Je kunt ook wijzigen in je orderlijst<br/>
 ![Edit](/doc/Edit.png)
 ![Swipe](/doc/Swipe.png)
 ![Delete](/doc/Delete.png)
+
+
+## nieuwe toevoegingen:
+Je kunt nu geen lege order plaatsen<br/>
+![Empty](/doc/Empty.png)
