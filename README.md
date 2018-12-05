@@ -2,19 +2,19 @@
 Gemaakt door Bart Witting
 
 Hier is de app:<br/>
-![Intro](/doc/Intro.png)
+![Intro](/doc/Intro.png)<br/>
 Het menu scherm:<br/>
-![Menu](/doc/Menu.png)
+![Menu](/doc/Menu.png)<br/>
 Het detail scherm:<br/>
-![Detail](/doc/Detail.png)
+![Detail](/doc/Detail.png)<br/>
 Toevoegen aan jou orders via de knop<br/>
-![Add](/doc/Add.png)
+![Add](/doc/Add.png)<br/>
 Een overzicht van je order<br/>
-![YourOrder](/doc/Yourorder.png)
+![YourOrder](/doc/Yourorder.png)<br/>
 Het submitten van je order geeft deze notificatie<br/>
-![Submit](/doc/Submit.png)
+![Submit](/doc/Submit.png)<br/>
 Op dit scherm zie je hoe lang het duurt voor je je order krijgt<br/>
-![Verwerking](/doc/Verwerking.png)
+![Verwerking](/doc/Verwerking.png)<br/>
 Je kunt ook wijzigen in je orderlijst<br/>
 ![Edit](/doc/Edit.png)
 ![Swipe](/doc/Swipe.png)
