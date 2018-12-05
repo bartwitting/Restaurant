@@ -2,7 +2,7 @@
 Gemaakt door Bart Witting
 
 Hier is de app:
-![Intro](/doc/Welkom.png)
+![Intro](/doc/Intro.png)
 Het menu scherm:
 ![Menu](/doc/Menu.png)
 Het detail scherm:
