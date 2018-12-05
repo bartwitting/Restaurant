@@ -30,6 +30,7 @@ class OrderTableViewController: UITableViewController {
         let orderTotal = MenuController.shared.order.menuItems.reduce(0.0) { (result, menuItem) -> Double in
             return result + menuItem.price
         }
+        print("Order total:", orderTotal)
         let formattedOrder = String(format: "$%.2f", orderTotal)
         let alert = UIAlertController(title: "Confirm Order", message: "You are about to submit your order with a total of \(formattedOrder)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Submit", style: .default) { action in
@@ -44,7 +45,7 @@ class OrderTableViewController: UITableViewController {
         MenuController.shared.submitOrder(forMenuIDs: menuIds) { (minutes) in
             DispatchQueue.main.async {
                 if let minutes = minutes {
-                    self.orderMinutes += minutes
+                    self.orderMinutes = minutes
                     self.performSegue(withIdentifier: "ConfirmSegue", sender: nil)
                 }
             }
@@ -103,6 +104,14 @@ class OrderTableViewController: UITableViewController {
                 }
                 cell.imageView?.image = image
             }
+            //        set the image size, partially copied from: https://stackoverflow.com/questions/2788028/how-do-i-make-uitableviewcells-imageview-a-fixed-size-even-when-the-image-is-sm
+            //
+            let itemSize = CGSize.init(width: 100, height: 100)
+            UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale);
+            let imageRect = CGRect.init(origin: CGPoint.zero, size: itemSize)
+            cell.imageView?.image!.draw(in: imageRect)
+            cell.imageView?.image! = UIGraphicsGetImageFromCurrentImageContext()!;
+            UIGraphicsEndImageContext();
         }
     }
 }
