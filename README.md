@@ -22,5 +22,5 @@ Je kunt ook wijzigen in je orderlijst<br/>
 
 
 ## nieuwe toevoegingen:
-Je kunt nu geen lege order plaatsen<br/>
-![Empty](/doc/Empty.png)
+Je kunt nu geen lege order plaatsen en de knop verwijst je meteen naar de catergorie lijst<br/>
+![EmptyOrder](/doc/DoOrder.png)
