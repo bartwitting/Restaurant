@@ -51,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5089A0D721C3E4FC00B18AC5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				50D1CA3521B7D58C005F8866 /* MenuController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		50D1CA0621B7CD5F005F8866 = {
 			isa = PBXGroup;
 			children = (
@@ -72,7 +80,8 @@
 			children = (
 				50D1CA1221B7CD5F005F8866 /* AppDelegate.swift */,
 				50D1CA3021B7D250005F8866 /* Boards */,
-				50D1CA3121B7D260005F8866 /* Controllers */,
+				50D1CA3121B7D260005F8866 /* ViewControllers */,
+				5089A0D721C3E4FC00B18AC5 /* Controllers */,
 				50D1CA3221B7D29D005F8866 /* Models */,
 				50D1CA1921B7CD60005F8866 /* Assets.xcassets */,
 				50D1CA1E21B7CD60005F8866 /* Info.plist */,
@@ -89,7 +98,7 @@
 			path = Boards;
 			sourceTree = "<group>";
 		};
-		50D1CA3121B7D260005F8866 /* Controllers */ = {
+		50D1CA3121B7D260005F8866 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				50D1CA2421B7CFED005F8866 /* CategoryTableViewController.swift */,
@@ -98,7 +107,7 @@
 				50D1CA2821B7D014005F8866 /* OrderTableViewController.swift */,
 				50D1CA3921B7E8AF005F8866 /* OrderConfirmViewController.swift */,
 			);
-			path = Controllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		50D1CA3221B7D29D005F8866 /* Models */ = {
@@ -107,7 +116,6 @@
 				50D1CA2C21B7D17D005F8866 /* MenuItem.swift */,
 				50D1CA2E21B7D23A005F8866 /* IntermediaryModels.swift */,
 				50D1CA3321B7D44C005F8866 /* Order.swift */,
-				50D1CA3521B7D58C005F8866 /* MenuController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

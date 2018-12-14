@@ -9,10 +9,11 @@
 import UIKit
 
 class OrderTableViewController: UITableViewController {
-
+    ///Defining the variables
     var order = Order() 
     var orderMinutes = 0
     
+    /// Building the screen
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
@@ -20,20 +21,22 @@ class OrderTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(tableView, selector: #selector(UITableView.reloadData), name: MenuController.orderUpdatedNotification, object: nil)
     }
     
+    /// Action to get back to this order list
     @IBAction func unwindToOrderList(segue: UIStoryboardSegue) {
         if segue.identifier == "DismissConfirmation" {
             MenuController.shared.order.menuItems.removeAll()
         }
     }
     
+    /// Action to submit the order and get the price and preptime
     @IBAction func submitTapped(_ sender: UIBarButtonItem) {
         let orderTotal = MenuController.shared.order.menuItems.reduce(0.0) { (result, menuItem) -> Double in
             return result + menuItem.price
         }
         if orderTotal == 0 {
             let empty = UIAlertController(title: "Empty Order", message: "You tried to order nothing", preferredStyle: .alert)
-//            empty.addAction(UIAlertAction(title: "Order something", style: .default) { action in self.performSegue(withIdentifier: "unwindToCat", sender: self)
-//            })
+            empty.addAction(UIAlertAction(title: "Order something", style: .default) { action in self.performSegue(withIdentifier: "unwindToCatVC", sender: self)
+            })
             empty.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             present(empty, animated: true, completion: nil)
         }
@@ -49,6 +52,7 @@ class OrderTableViewController: UITableViewController {
         }
     }
     
+    /// Function to push the order to the server
     func uploadOrder() {
         let menuIds = MenuController.shared.order.menuItems.map { $0.id }
         MenuController.shared.submitOrder(forMenuIDs: menuIds) { (minutes) in
@@ -61,6 +65,7 @@ class OrderTableViewController: UITableViewController {
         }
     }
     
+    /// Action to send details to the next VC, the preptime or the orderdetail
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ConfirmSegue" {
             let orderconfirmVC = segue.destination as! OrderConfirmViewController
@@ -74,35 +79,38 @@ class OrderTableViewController: UITableViewController {
     }
     
     
-    // Override to support conditional editing of the table view.
+    /// Function to make a cell editible
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     
     
-    // Override to support editing the table view.
+    /// Function to define the action when deleted
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             MenuController.shared.order.menuItems.remove(at: indexPath.row)
         }
     }
     
+    /// Function to define the cell height
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     
+    /// Function to set amount of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MenuController.shared.order.menuItems.count
     }
     
-    
+    /// Function to make the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCellId", for: indexPath)
         configure(cell: cell, forItemAt: indexPath)
         return cell
     }
     
+    /// Function to fill the cell
     func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         let menuItem = MenuController.shared.order.menuItems[indexPath.row]
         cell.textLabel?.text = menuItem.name

@@ -9,9 +9,11 @@
 import UIKit
 
 class MenuTableViewController: UITableViewController {
+    /// Defining variables, like one from the last VC
     var menuItems = [MenuItem]()
     var category: String!
     
+    /// Building the screen
     override func viewDidLoad() {
         super.viewDidLoad()
         title = category.capitalized
@@ -23,6 +25,7 @@ class MenuTableViewController: UITableViewController {
         }
     }
     
+    /// Function to put the data in the variable
     func updateUI(with menuItems: [MenuItem]) {
         DispatchQueue.main.async {
             self.menuItems = menuItems
@@ -30,21 +33,24 @@ class MenuTableViewController: UITableViewController {
         }
     }
     
+    /// Function to set the cell height
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     
+    /// Function to set the amount of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
     }
     
-    
+    /// Function to make the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCellId", for: indexPath)
         configure(cell: cell, forItemAt: indexPath)
         return cell
     }
     
+    /// Function to fill the cell
     func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         let menuItem = menuItems[indexPath.row]
         cell.textLabel?.text = menuItem.name
@@ -70,6 +76,7 @@ class MenuTableViewController: UITableViewController {
         }
     }
     
+    /// Action to send the menuitem to the next VC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MenuDetailSegue" {
             let menuitemdetailVC = segue.destination as! MenuItemDetailViewController

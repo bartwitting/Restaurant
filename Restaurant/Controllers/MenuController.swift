@@ -8,6 +8,7 @@
 import UIKit
 
 class MenuController {
+    /// Defining the variables
     static let shared = MenuController()
     //let baseURL = URL(string: "http://localhost:8090/")!
     let baseURL = URL(string: "https://resto.mprog.nl/")!
@@ -20,6 +21,7 @@ class MenuController {
     
     static let orderUpdatedNotification = Notification.Name("MenuController.orderUpdated")
     
+    /// Function to retrieve the category data from the server
     func fetchCategories(completion: @escaping ([String]?) -> Void) {
         let categoryURL = baseURL.appendingPathComponent("categories")
         let task = URLSession.shared.dataTask(with: categoryURL) {
@@ -33,6 +35,7 @@ class MenuController {
         task.resume()
     }
     
+    /// Function to retrieve the menu data from the server
     func fetchMenuItems(categoryName: String, completion: @escaping ([MenuItem]?) -> Void) {
         let initialMenuURL = baseURL.appendingPathComponent("menu")
         var components = URLComponents(url: initialMenuURL, resolvingAgainstBaseURL: true)!
@@ -50,6 +53,7 @@ class MenuController {
         task.resume()
     }
     
+    /// Function to write the order data to the servers
     func submitOrder(forMenuIDs menuIds: [Int], completion: @escaping (Int?) -> Void) {
         let orderURL = baseURL.appendingPathComponent("order")
         var request = URLRequest(url: orderURL)
@@ -71,6 +75,7 @@ class MenuController {
         task.resume()
     }
     
+    /// Function to retrieve image data from the server
     func fetchImage(url: URL, completion: @escaping (UIImage?) -> Void) {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let data = data,
